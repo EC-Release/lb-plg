@@ -2,10 +2,20 @@ ec-plugin:
   lb:
     routing:
       header: CF_INSTANCE_INDEX
-      - value: 0
-        url: k8cluster.somepod-0.local
-      - value: 1
-        url: k8cluster.somepod-1.local
+        - value: 0
+          url: k8cluster.somepod-0.local
+        - value: 1
+          url: k8cluster.somepod-1.local
+      path: /some/path/$param1/$param2
+        - param: param1
+          value: hello #/some/path/hello
+          url: k8cluster.somepod-2.local
+        - param: param1
+          value: world #/some/path/world
+          url: k8cluster.somepod-3.local
+        - param: param2
+          value: letsgo #/some/path/{}/letsgo
+          url: k8cluster.somepod-4.local
     status: active
     schema: http
     hostname: k8cluster.lb-pod.local
