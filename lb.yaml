@@ -1,0 +1,14 @@
+ec-plugin:
+  lb:
+    routing:
+      header: CF_INSTANCE_INDEX
+      - value: 0
+        url: k8cluster.somepod-0.local
+      - value: 1
+        url: k8cluster.somepod-1.local
+    status: active
+    schema: http
+    hostname: k8cluster.lb-pod.local
+    clusterIp: 10.10.10.1
+    port: "8080"
+    command: ./lb
